@@ -7347,6 +7347,7 @@ GameObject:
   - component: {fileID: 8096725119030943050}
   - component: {fileID: 6035228579322451808}
   - component: {fileID: 7394602448231174377}
+  - component: {fileID: 649546959983494649}
   m_Layer: 0
   m_Name: ChessKinematicPrefab
   m_TagString: Untagged
@@ -7423,6 +7424,7 @@ MonoBehaviour:
   NetworkedBehaviours:
   - {fileID: 6035228579322451808}
   - {fileID: 7394602448231174377}
+  - {fileID: 649546959983494649}
 --- !u!54 &1156263228835010946
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7479,7 +7481,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4976436487641180921}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 413bd4e9cbbc96b46ac5a1d62a4105d5, type: 3}
   m_Name: 
@@ -7492,7 +7494,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4976436487641180921}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b72e9ba2c21430c818f53e1079c2a93, type: 3}
   m_Name: 
@@ -7504,12 +7506,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4976436487641180921}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a591d221a634417e9827eb58e17de84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SyncScale: 0
+  SyncScale: 1
   SyncParent: 0
   _interpolationTarget: {fileID: 4976436489682273204}
   UsePreciseRotation: 0
@@ -7519,6 +7521,18 @@ MonoBehaviour:
     Position: 0.01
     Rotation: 0.01
     Scale: 0.01
+--- !u!114 &649546959983494649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976436487641180921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d9d5dff99455a1438989809cc33e2db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4976436487746857443
 GameObject:
   m_ObjectHideFlags: 0
