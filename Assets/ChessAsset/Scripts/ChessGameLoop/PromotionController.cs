@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ChessMainLoop
 {
-    public class PromotionController :  SingletonNetworked<PromotionController>
+    public class PromotionController :  SingletonNetworkedReplaceable<PromotionController>
     {
         [SerializeField] private GameObject _blackPieces;
         [SerializeField] private GameObject _whitePieces;

@@ -13,14 +13,14 @@ namespace Digiphy
         [SerializeField] private Toggle _testMenuControllsAndSizeToggle;
         [SerializeField] private Toggle _testMenuCouchToggle;
         [Header("Setup Toggles")]
-        [SerializeField] private Toggle _toggleSmallKinematic;
-        [SerializeField] private Toggle _toggleSmallLogic;
-        [SerializeField] private Toggle _toggleSmallSnapping;
-        [SerializeField] private Toggle _toggleLargeKinematic;
-        [SerializeField] private Toggle _toggleLargeLogic;
-        [SerializeField] private Toggle _toggleLargeSnapping;
-        [SerializeField] private Toggle _toggleChessInBetween;
-        [SerializeField] private Toggle _toggleChessInFront;
+        [SerializeField] private Button _buttonSmallKinematic;
+        [SerializeField] private Button _buttonSmallLogic;
+        [SerializeField] private Button _buttonSmallSnapping;
+        [SerializeField] private Button _buttonLargeKinematic;
+        [SerializeField] private Button _buttonLargeLogic;
+        [SerializeField] private Button _buttonLargeSnapping;
+        [SerializeField] private Button _buttonChessInBetween;
+        [SerializeField] private Button _buttonChessInFront;
         [Header("Chess Prefabs")]
         [SerializeField] private GameObject _chessKinematic;
         [SerializeField] private GameObject _chessLogic;
@@ -28,11 +28,10 @@ namespace Digiphy
         [Header("Chess Scales")]
         [SerializeField] private Vector3 _scaleSmall;
         [SerializeField] private Vector3 _scaleLarge;
-        [Header("Chess Locations")]
-        [SerializeField] private Transform _chessLocationTable;
-        [SerializeField] private Transform _chessLocationCouchInFront;
-        [SerializeField] private Transform _chessLocationCouchInBetween;
-        [SerializeField] private Transform _chessLocationLarge;
+        private Transform _chessLocationTable;
+        private Transform _chessLocationCouchInFront;
+        private Transform _chessLocationCouchInBetween;
+        private Transform _chessLocationLarge;
         private NetworkRunner _runner;
         private NetworkObject _currentChess;
 
@@ -44,30 +43,31 @@ namespace Digiphy
             _testMenuCouchToggle.onValueChanged.AddListener(value =>
                 _testMenuCouch.SetActive(value));
 
-            _toggleSmallKinematic.onValueChanged.AddListener(value => {
-                if (value) CreateChess(_chessKinematic, _chessLocationTable, _scaleSmall);
-            });
-            _toggleSmallLogic.onValueChanged.AddListener(value => {
-                if (value) CreateChess(_chessLogic, _chessLocationTable, _scaleSmall);
-            });
-            _toggleSmallSnapping.onValueChanged.AddListener(value => {
-                if (value) CreateChess(_chessSnapping, _chessLocationTable, _scaleSmall);
-            });
-            _toggleLargeKinematic.onValueChanged.AddListener(value => {
-                if (value) CreateChess(_chessKinematic, _chessLocationLarge, _scaleLarge);
-            });
-            _toggleLargeLogic.onValueChanged.AddListener(value => {
-                if (value) CreateChess(_chessLogic, _chessLocationLarge, _scaleLarge);
-            });
-            _toggleLargeSnapping.onValueChanged.AddListener(value => {
-                if (value) CreateChess(_chessSnapping, _chessLocationLarge, _scaleLarge);
-            });
-            _toggleChessInBetween.onValueChanged.AddListener(value => {
-                if (value) CreateChess(_chessLogic, _chessLocationCouchInBetween, _scaleSmall);
-            });
-            _toggleChessInFront.onValueChanged.AddListener(value => {
-                if (value) CreateChess(_chessLogic, _chessLocationCouchInFront, _scaleSmall);
-            });
+            _buttonSmallKinematic.onClick.AddListener(() => 
+                CreateChess(_chessKinematic, _chessLocationTable, _scaleSmall));
+            _buttonSmallLogic.onClick.AddListener(() => 
+                CreateChess(_chessLogic, _chessLocationTable, _scaleSmall));
+            _buttonSmallSnapping.onClick.AddListener(() => 
+                CreateChess(_chessSnapping, _chessLocationTable, _scaleSmall));
+            _buttonLargeKinematic.onClick.AddListener(() =>
+                CreateChess(_chessKinematic, _chessLocationLarge, _scaleLarge));
+            _buttonLargeLogic.onClick.AddListener(() =>
+                CreateChess(_chessLogic, _chessLocationLarge, _scaleLarge));
+            _buttonLargeSnapping.onClick.AddListener(() =>
+                CreateChess(_chessSnapping, _chessLocationLarge, _scaleLarge));
+            _buttonChessInBetween.onClick.AddListener(() =>
+                CreateChess(_chessLogic, _chessLocationCouchInBetween, _scaleSmall));
+            _buttonChessInFront.onClick.AddListener(() =>
+                CreateChess(_chessLogic, _chessLocationCouchInFront, _scaleSmall));
+        }
+
+        public void SetChessLocations(Transform chessTable, Transform chessCouchInFront, 
+            Transform chessCouchInBetween, Transform chessLarge)
+        {
+            _chessLocationTable = chessTable;
+            _chessLocationCouchInFront = chessCouchInFront;
+            _chessLocationCouchInBetween = chessCouchInBetween;
+            _chessLocationLarge = chessLarge;
         }
 
         public void CreateChess(GameObject chessPrefab, Transform transform, Vector3 scale)

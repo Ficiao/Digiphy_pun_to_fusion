@@ -6,6 +6,7 @@ namespace Digiphy
     {
         public override void Spawned()
         {
+            TestingSetupManager.Instance.Init(Runner);
             if (VrRoomSynchronizer.Instance == null) return;
 
             VrRoomSynchronizer.Instance.SynchronizeRoomWithAr(Runner, transform);

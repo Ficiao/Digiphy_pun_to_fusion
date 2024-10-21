@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace ChessMainLoop
 {
-    public class PieceController : SingletonNetworked<PieceController>
+    public class PieceController : SingletonNetworkedReplaceable<PieceController>
     {
         private Piece _activePiece;
         public bool AnyActive { get => _activePiece != null; }

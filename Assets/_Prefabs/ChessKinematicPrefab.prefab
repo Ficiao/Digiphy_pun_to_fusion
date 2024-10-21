@@ -7511,9 +7511,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a591d221a634417e9827eb58e17de84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SyncScale: 1
+  SyncScale: 0
   SyncParent: 0
-  _interpolationTarget: {fileID: 4976436489682273204}
+  _interpolationTarget: {fileID: 0}
   UsePreciseRotation: 0
   UseRenderSleepThresholds: 1
   RenderThresholds:

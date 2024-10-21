@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5447164437422899258}
+  - component: {fileID: 5380007196172519495}
   m_Layer: 0
   m_Name: ChessPositions
   m_TagString: Untagged
@@ -30,11 +31,27 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5288675898798556659}
-  - {fileID: 7481356919775198767}
   - {fileID: 1678732663173412790}
+  - {fileID: 7481356919775198767}
   - {fileID: 7627581884940038533}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5380007196172519495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120545577773263878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e802d1ac258ee34ebdd6a6cacb1edc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _chessLocationTable: {fileID: 5288675898798556659}
+  _chessLocationCouchInFront: {fileID: 1678732663173412790}
+  _chessLocationCouchInBetween: {fileID: 7481356919775198767}
+  _chessLocationLarge: {fileID: 7627581884940038533}
 --- !u!1 &3591948557141397692
 GameObject:
   m_ObjectHideFlags: 0

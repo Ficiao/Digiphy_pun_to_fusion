@@ -21,9 +21,11 @@ namespace Digiphy
         [SerializeField] private InputActionReference _placeCommand;
         [SerializeField] private Transform _rightController;
         [SerializeField] private RoomType _roomType;
+        [SerializeField] private bool _enabled;
 
         private void Update()
         {
+            if (!_enabled) return;
             if (_placeCommand.action.WasPressedThisFrame())
             {
                 CreateSpatialAnchor();

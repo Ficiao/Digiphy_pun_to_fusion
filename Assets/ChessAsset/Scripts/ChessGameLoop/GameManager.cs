@@ -7,7 +7,7 @@ namespace ChessMainLoop
 {
     public delegate void PieceMoved();
 
-    public class GameManager : SingletonNetworked<GameManager>
+    public class GameManager : SingletonNetworkedReplaceable<GameManager>
     {
         private int _turnCount = 0;
         public int TurnCount { get => _turnCount; }
