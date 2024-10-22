@@ -1,4 +1,5 @@
 using Fusion;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,12 +29,17 @@ namespace Digiphy
         [Header("Chess Scales")]
         [SerializeField] private Vector3 _scaleSmall;
         [SerializeField] private Vector3 _scaleLarge;
+        [Header("Additional toggles")]
+        [SerializeField] private Toggle _chessMoveableToggle;
         private Transform _chessLocationTable;
         private Transform _chessLocationCouchInFront;
         private Transform _chessLocationCouchInBetween;
         private Transform _chessLocationLarge;
         private NetworkRunner _runner;
         private NetworkObject _currentChess;
+
+        public bool IsChessMoveable => _chessMoveableToggle.isOn;
+        public Action<bool> ChessMoveableChanged;
 
         public void Init(NetworkRunner runer)
         {
@@ -59,6 +65,8 @@ namespace Digiphy
                 CreateChess(_chessLogic, _chessLocationCouchInBetween, _scaleSmall));
             _buttonChessInFront.onClick.AddListener(() =>
                 CreateChess(_chessLogic, _chessLocationCouchInFront, _scaleSmall));
+
+            _chessMoveableToggle.onValueChanged.AddListener(value => ChessMoveableChanged.Invoke(value));
         }
 
         public void SetChessLocations(Transform chessTable, Transform chessCouchInFront, 

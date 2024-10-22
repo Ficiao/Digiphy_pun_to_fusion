@@ -1,5 +1,6 @@
 using Oculus.Interaction;
 using UnityEngine;
+using ChessEnums;
 
 namespace ChessMainLoop
 {
@@ -7,7 +8,7 @@ namespace ChessMainLoop
     {
         [SerializeField] private Grabbable _grabbable;
         [SerializeField] private Renderer _renderer;
-        [SerializeField] private int _pieceIndex;
+        [SerializeField] private ChessPieceType _pieceIndex;
         private Color _startColor;
 
         private void Start()

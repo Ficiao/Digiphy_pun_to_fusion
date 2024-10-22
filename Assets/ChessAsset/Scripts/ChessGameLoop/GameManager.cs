@@ -1,3 +1,4 @@
+using ChessEnums;
 using Digiphy;
 using System.Collections.Generic;
 using TMPro;
@@ -69,6 +70,8 @@ namespace ChessMainLoop
 
         public void ChangeTurn()
         {
+            if (_promotingPawn) return;
+
             if (_turnPlayer == SideColor.White)
             {
                 _turnPlayer = SideColor.Black;
@@ -109,13 +112,14 @@ namespace ChessMainLoop
         public void PawnPromoting(Pawn _pawn)
         {
             _promotingPawn = _pawn;
+            if (_pawn.PieceColor != LocalPlayer) return;
             PromotionController.Instance.PawnPromotionMenu(_pawn.PieceColor);
         }
 
         /// <summary>
         /// Replaces pawn that is getting promoted with selected piece, then checks for checkmate.
         /// </summary>
-        public void SelectedPromotion(Piece _piece, int _pieceIndex, (int Row, int Column) pawnLocation)
+        public void SelectedPromotion(Piece _piece, ChessPieceType pieceIndex, (int Row, int Column) pawnLocation)
         {
             Pawn pawn = (Pawn)BoardState.Instance.GetField(pawnLocation.Row, pawnLocation.Column);
 
@@ -123,22 +127,9 @@ namespace ChessMainLoop
             _piece.transform.localScale = pawn.transform.localScale;
             _piece.HasMoved = true;
             _promotingPawn = null;
-            BoardState.Instance.PromotePawn(pawn, _piece, _pieceIndex);
+            BoardState.Instance.PromotePawn(pawn, _piece, pieceIndex);
 
-            SideColor _winner = BoardState.Instance.CheckIfGameOver();
-            if (_winner != SideColor.None)
-            {
-                if (_turnPlayer == SideColor.White)
-                {
-                    _winner = SideColor.Black;
-                }
-                else if (_turnPlayer == SideColor.Black)
-                {
-                    _winner = SideColor.White;
-                }
-
-                GameEnd(_winner);
-            }
+            ChangeTurn();
         }
     }
 }

@@ -37,7 +37,22 @@ namespace ChessMainLoop
         public Animator Animator => _animator;
         public bool IsActive { get => _isActive; set { _isActive = false; _renderer.material.color = _startColor; } }
         public bool HasMoved { get => _hasMoved; set => _hasMoved = value; }
-        public PathPiece AssignedAsEnemy { get => _assignedAsEnemy; set => _assignedAsEnemy = value; }
+        public PathPiece AssignedAsEnemy 
+        { 
+            get => _assignedAsEnemy; 
+            set 
+            {
+                _assignedAsEnemy = value; 
+                if(value != null)
+                {
+                    _grabbable.gameObject.SetActive(true);
+                }
+                else if(_pieceColor != GameManager.Instance.LocalPlayer)
+                {
+                    _grabbable.gameObject.SetActive(false);
+                }
+            }
+        }
         public PathPiece AssignedAsCastle { get => _assignedAsCastle; set { _assignedAsCastle = value; _renderer.material.color = _startColor; } }
         public Pawn WasPawn { get => _wasPawn; set => _wasPawn = value; }
         #endregion

@@ -1,10 +1,11 @@
+using ChessEnums;
 using Digiphy;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace ChessMainLoop
 {
-    public class BoardState : Singleton<BoardState>
+    public class BoardState : SingletonReplaceable<BoardState>
     {
         private Piece[,] _gridState;
         [SerializeField]
@@ -119,10 +120,10 @@ namespace ChessMainLoop
         /// <summary>
         /// Replaces pawn being promoted with the selected piece.
         /// </summary>
-        public void PromotePawn(Pawn promotingPawn, Piece piece, int pieceIndex)
+        public void PromotePawn(Pawn promotingPawn, Piece piece, ChessPieceType pieceIndex)
         {
             _promotedPieces.Enqueue(piece);
-            MoveTracker.Instance.AddMove(promotingPawn.Location.Row, promotingPawn.Location.Column, pieceIndex, pieceIndex, GameManager.Instance.TurnCount - 1);
+            MoveTracker.Instance.AddMove(promotingPawn.Location.Row, promotingPawn.Location.Column, (int)pieceIndex, (int)pieceIndex, GameManager.Instance.TurnCount - 1);
             _gridState[promotingPawn.Location.Row, promotingPawn.Location.Column] = piece;
             piece.PiecePromoted(promotingPawn);
             promotingPawn.gameObject.SetActive(false);

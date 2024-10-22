@@ -1,3 +1,4 @@
+using ChessEnums;
 using Digiphy;
 using Fusion;
 using UnityEngine;
@@ -25,7 +26,7 @@ namespace ChessMainLoop
         }
 
         [Rpc(sources: RpcSources.All, targets: RpcTargets.All, HostMode = RpcHostMode.SourceIsServer)]
-        public void RPC_PieceSelected(int pieceIndex, int Row, int Column)
+        public void RPC_PieceSelected(ChessPieceType pieceIndex, int Row, int Column)
         {
             (int, int) pawnLocation = (Row, Column);
             _whitePieces.SetActive(false);
@@ -33,29 +34,29 @@ namespace ChessMainLoop
 
             switch(pieceIndex)
             {
-                case -2:
-                    GameManager.Instance.SelectedPromotion(Instantiate(_blackQueen), -2, pawnLocation);
+                case ChessPieceType.BlackQueen:
+                    GameManager.Instance.SelectedPromotion(Instantiate(_blackQueen), pieceIndex, pawnLocation);
                     break;
-                case -3:
-                    GameManager.Instance.SelectedPromotion(Instantiate(_whiteQueen), -3, pawnLocation);
+                case ChessPieceType.WhiteQueen:
+                    GameManager.Instance.SelectedPromotion(Instantiate(_whiteQueen), pieceIndex, pawnLocation);
                     break;
-                case -4:
-                    GameManager.Instance.SelectedPromotion(Instantiate(_blackRook), -4, pawnLocation);
+                case ChessPieceType.BlackRook:
+                    GameManager.Instance.SelectedPromotion(Instantiate(_blackRook), pieceIndex, pawnLocation);
                     break;
-                case -5:
-                    GameManager.Instance.SelectedPromotion(Instantiate(_whiteRook), -5, pawnLocation);
+                case ChessPieceType.WhiteRook:
+                    GameManager.Instance.SelectedPromotion(Instantiate(_whiteRook), pieceIndex, pawnLocation);
                     break;
-                case -6:
-                    GameManager.Instance.SelectedPromotion(Instantiate(_blackBishop), -6, pawnLocation);
+                case ChessPieceType.BlackBishop:
+                    GameManager.Instance.SelectedPromotion(Instantiate(_blackBishop), pieceIndex, pawnLocation);
                     break;
-                case -7:
-                    GameManager.Instance.SelectedPromotion(Instantiate(_whiteBishop), -7, pawnLocation);
+                case ChessPieceType.WhiteBishop:
+                    GameManager.Instance.SelectedPromotion(Instantiate(_whiteBishop), pieceIndex, pawnLocation);
                     break;
-                case -8:
-                    GameManager.Instance.SelectedPromotion(Instantiate(_blackKnight), -8, pawnLocation);
+                case ChessPieceType.BlackKnight:
+                    GameManager.Instance.SelectedPromotion(Instantiate(_blackKnight), pieceIndex, pawnLocation);
                     break;
-                case -9:
-                    GameManager.Instance.SelectedPromotion(Instantiate(_whiteKnight), -9, pawnLocation);
+                case ChessPieceType.WhiteKnight:
+                    GameManager.Instance.SelectedPromotion(Instantiate(_whiteKnight), pieceIndex, pawnLocation);
                     break;
             }
         }
