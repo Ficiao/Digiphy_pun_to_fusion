@@ -30,6 +30,16 @@ namespace Digiphy
             LoadAnchors();
         }
 
+        private void Update()
+        {
+            GameObject avatar = GameObject.Find("S0_L0_M1_V0_optimized_geom,0");
+            if (avatar == null) return;
+
+            MeshRenderer renderer = avatar.GetComponent<MeshRenderer>();
+            renderer.enabled = false;
+            enabled = false;
+        }
+
         private async void LoadAnchors()
         {
             string uuid = PlayerPrefs.GetString(_roomType.ToString());

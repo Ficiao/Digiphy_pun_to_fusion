@@ -20,14 +20,7 @@ namespace ChessMainLoop
 
         private void Awake()
         {
-            if (_instance != null && _instance != this)
-            {
-                Destroy(this.gameObject);
-            }
-            else
-            {
-                _instance = this;
-            }
+            _instance = this;
         }
 
         private void Start()

@@ -23,6 +23,7 @@ namespace Digiphy
         public override void Despawned(NetworkRunner runner, bool hasState)
         {
             TestingSetupManager.Instance.ChessDeleted(Object);
+            TestingSetupManager.Instance.ChessMoveableChanged -= ChessMoveableChanged;
             base.Despawned(runner, hasState);
         }
 

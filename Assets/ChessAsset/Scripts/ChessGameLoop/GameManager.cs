@@ -34,6 +34,8 @@ namespace ChessMainLoop
 
         public override void Spawned()
         {
+            base.Spawned();
+
             _checkedSide = SideColor.None;
             _turnPlayer = SideColor.White;
             if (Runner.IsSharedModeMasterClient)

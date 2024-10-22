@@ -1,9 +1,10 @@
 using System.Collections;
 using UnityEngine;
+using Digiphy;
 
 namespace ChessMainLoop
 {
-    public class AnimationManager : MonoBehaviour
+    public class AnimationManager : SingletonReplaceable<AnimationManager>
     {
         #region Private animator prefabs
         [SerializeField]
@@ -24,22 +25,7 @@ namespace ChessMainLoop
         [SerializeField] private AudioSource _moveSound;
         private bool _isActive = false;
 
-        public bool IsActive { get => _isActive; }
-
-        private static AnimationManager _instance;
-        public static AnimationManager Instance { get => _instance; }
-
-        private void Awake()
-        {
-            if (_instance != null && _instance != this)
-            {
-                Destroy(this.gameObject);
-            }
-            else
-            {
-                _instance = this;
-            }
-        }
+        public bool IsActive { get => _isActive; }        
 
         /// <summary>
         /// Assigns animator controller to piece based on piece type.

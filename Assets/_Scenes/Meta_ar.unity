@@ -27312,7 +27312,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1417234826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37176,6 +37176,7 @@ MonoBehaviour:
   _placeCommand: {fileID: 187161793506945269, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   _rightController: {fileID: 1076869685}
   _roomType: 3
+  _enabled: 0
 --- !u!4 &1996439084
 Transform:
   m_ObjectHideFlags: 0

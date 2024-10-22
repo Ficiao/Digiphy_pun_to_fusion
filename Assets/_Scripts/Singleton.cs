@@ -39,11 +39,6 @@ namespace Digiphy
         public static T Instance { get => _instance; private set => _instance = value; }
         protected virtual void Awake()
         {
-            if (_instance != null && _instance != this)
-            {
-                Destroy(_instance.gameObject);
-            }
-
             Instance = this as T;
 
             Init();
@@ -65,12 +60,14 @@ namespace Digiphy
     {
         private static T _instance = null;
         public static T Instance { get => _instance; private set => _instance = value; }
-        protected virtual void Awake()
+        public override void Spawned()
         {
-            if (_instance != null && _instance != this)
-            {
-                Runner.Despawn(_instance.Object);
-            }
+            base.Spawned();
+
+            //if (_instance != null && _instance != this && _instance.Object)
+            //{
+            //    Runner.Despawn(_instance.Object);
+            //}
 
             Instance = this as T;
             Init();
@@ -84,7 +81,7 @@ namespace Digiphy
         protected virtual void OnApplicationQuit()
         {
             Instance = null;
-            Runner.Despawn(Object);
+            //if(Object) Runner.Despawn(Object);
         }
     }
 
@@ -92,16 +89,18 @@ namespace Digiphy
     {
         private static T _instance = null;
         public static T Instance { get => _instance; private set => _instance = value; }
-        protected virtual void Awake()
+        public override void Spawned()
         {
-            if (_instance != null && _instance != this)
-            {
-                Runner.Despawn(Object);
-            }
-            else
-            {
+            base.Spawned();
+
+            //if (_instance != null && _instance != this && _instance.Object)
+            //{
+            //    Runner.Despawn(Object);
+            //}
+            //else
+            //{
                 Instance = this as T;
-            }
+            //}
 
             Init();
         }
@@ -114,7 +113,7 @@ namespace Digiphy
         protected virtual void OnApplicationQuit()
         {
             Instance = null;
-            Runner.Despawn(Object);
+            //if(Object) Runner.Despawn(Object);
         }
     }
 
